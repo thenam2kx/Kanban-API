@@ -1,0 +1,41 @@
+{
+  "name": "kanban-api",
+  "private": true,
+  "version": "1.0.0",
+  "description": "kanban - warehouse management",
+  "main": "server.ts",
+  "author": "thenam2kx",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.16.0"
+  },
+  "scripts": {
+    "lint": "eslint src --ext ts --report-unused-disable-directives --max-warnings 0",
+    "clean": "rm -rf build && mkdir build",
+    "build-ts": "tsc",
+    "build": "npm run clean && npm run build-ts",
+    "production": "npm run build && node ./build/src/server.js",
+    "dev": "nodemon --exec ts-node ./src/server.ts"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.25.6",
+    "@types/express": "^4.17.21",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.6.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.6",
+    "@babel/core": "^7.25.2",
+    "@babel/eslint-parser": "^7.25.1",
+    "@babel/plugin-transform-runtime": "^7.25.4",
+    "@babel/preset-env": "^7.25.4",
+    "@types/node": "^22.7.0",
+    "eslint": "^9.11.1",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.6.2"
+  }
+}

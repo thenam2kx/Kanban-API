@@ -1,0 +1,15 @@
+{
+  "presets": [
+    "@babel/preset-env",     // Biên dịch ECMAScript mới nhất sang phiên bản hỗ trợ bởi Node.js
+    "@babel/preset-typescript" // Biên dịch TypeScript
+  ],
+  "plugins": [
+    ["@babel/plugin-transform-runtime"], // Hỗ trợ các tính năng runtime mới của JavaScript
+    ["module-resolver", {
+      "alias": {
+        "~": "./src"  // Alias để import đường dẫn dễ dàng hơn
+      },
+      "extensions": [".js", ".ts"] // Hỗ trợ phần mở rộng .ts và .js khi sử dụng module alias
+    }]
+  ]
+}
