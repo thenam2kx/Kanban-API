@@ -3,7 +3,9 @@ import mongoose, { Schema } from "mongoose";
 const userScheme = new Schema({
   username: {
     type: String,
-    require: true
+    require: true,
+    min: [6, 'eejd'],
+    max: 12
   },
   email: {
     type: String,
@@ -23,5 +25,5 @@ const userScheme = new Schema({
   }
 })
 
-const userModel = mongoose.model('user', userScheme)
+const userModel = mongoose.model('users', userScheme)
 export default userModel
