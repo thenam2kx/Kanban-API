@@ -7,4 +7,5 @@ export const env = {
   APP_HOST: process.env.APP_HOST as string,
   APP_PORT: process.env.APP_PORT as string,
   AUTHOR: process.env.AUTHOR as string,
+  SECRET_KEY: process.env.SECRET_KEY as string,
 }
