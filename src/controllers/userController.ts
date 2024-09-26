@@ -1,6 +1,7 @@
 import userModel from "../models/userModel"
 import bcrypt from 'bcrypt'
 import { validateEmail, validatePassword, validateUsername } from "../utils/validUser"
+import { getAccessToken } from "../utils/getAccessToken"
 
 export const register = async (req: any, res: any) => {
   const body = req.body
@@ -42,7 +43,6 @@ export const register = async (req: any, res: any) => {
     const newUser = new userModel(body)
     await newUser.save()
 
-
     // Optionally delete password before returning response
     // delete newUser.password
     const { password: _, ...userWithoutPassword } = newUser.toObject();
@@ -50,7 +50,11 @@ export const register = async (req: any, res: any) => {
 
     res.status(201).json({
       message: 'Registration successful',
-      data: userWithoutPassword
+      data: {...userWithoutPassword, token: await getAccessToken({
+        _id: userWithoutPassword._id,
+        email: userWithoutPassword.email as string,
+        rule: 1
+      })}
     })
 
 
